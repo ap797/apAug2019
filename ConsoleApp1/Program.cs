@@ -19,29 +19,43 @@ namespace ConsoleApp1
             //navigate to horse-dev
             driver.Navigate().GoToUrl("http://horse-dev.azurewebsites.net/Account/Login?ReturnUrl=%2f");
 
+            //maximize t
+            driver.Manage().Window.Maximize();
 
-            // Identfying the username 
-            IWebElement firstName = driver.FindElement(By.Id("UserName"));
-            firstName.SendKeys("hari");
+            //access loginsucess method 
+            
+            // an instance of class
+            LoginPage loginInstance = new LoginPage();
+            loginInstance.LoginSuccess(driver);
 
-            //Identify password 
-            IWebElement password = driver.FindElement(By.Id("Password"));
-            password.SendKeys("123123");
+            //Class for Home page,
+            // method to verify the home 
+            // method to click adminstration
+            // method to click time n material
 
-            // Identify Login and click
-            IWebElement loginbtn = driver.FindElement(By.XPath("//*[@id=\"loginForm\"]/form/div[3]/input[1]"));
-            loginbtn.Click();
+            HomePage homeInstance = new HomePage();
+            homeInstance.VerifyHomePage(driver);
+            homeInstance.ClickAdminstration(driver);
+            homeInstance.ClickTimenMaterial(driver);
 
-            //assignment is to check whether hello hari is displayed on the page 
-         
-            // assignment 2 admin > time n material > create new 
 
-            //Verification part
-            // assignment 3 is to verify that the time an material object that you created is displayed on the table
+            TimenMaterialPage tmPage = new TimenMaterialPage();
+            tmPage.ClickCreateNew(driver);
+            tmPage.EnterValidDataandSave(driver);
+            tmPage.ValidateData(driver);
+           
+
+            //to stop console from closing. 
+            Console.ReadLine();
 
             //Close the driver
             driver.Quit();
-        
+
+            //static class 
+            //StaticClass.StaticMethod(); 
+            //comment a line ctrl +k + c
+            //uncomment a line ctrl +k + u
+
         }
     }
 }
