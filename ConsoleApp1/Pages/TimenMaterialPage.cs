@@ -45,7 +45,7 @@ namespace ConsoleApp1
                         //Identify the code element
                         IWebElement code = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[" + i + "]/td[1]"));
                         Console.WriteLine(code.Text);
-                        if (code.Text == "H162RDA00075618")
+                        if (code.Text == "HafsdfsddfA00075618")
                         {
                             Console.WriteLine("Test Passed, code found on table");
                             return;
@@ -54,7 +54,7 @@ namespace ConsoleApp1
                     driver.FindElement(By.XPath("//span[contains(.,'Go to the next page')]")).Click();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("Test Failed, Code not found");
             }
